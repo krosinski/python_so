@@ -1,11 +1,15 @@
 #include <iostream>
-#include "AwesomeModule.h"
+#include <cstdlib>
 #include <unistd.h>
+#include "AwesomeModule.h"
 
 int main(int argc, char* argv[]){
-    AwesomeModule* mod = new AwesomeModule;
-    mod->start();
-    mod->sampleCommand(123, "heelo!!!!111");
-    mod->stop();
-    free(mod);
+    if (argc > 2) {
+        AwesomeModule* mod = new AwesomeModule;
+        int a = atoi(argv[1]);
+        int b = atoi(argv[2]);
+        int res = mod->pow(a, b);
+        std::cout << "Pow res: " << res << std::endl;
+        free(mod);
+    }
 }
